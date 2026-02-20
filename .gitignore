@@ -1,0 +1,61 @@
+# ============================
+# Django / Python
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pkl
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# Django specific
+media/
+staticfiles/
+*.mo
+
+# Local settings
+local_settings.py
+.env
+
+# ============================
+# Frontend (HTML, CSS, JS puro)
+# ============================
+# Archivos temporales o backups
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# ============================
+# IDEs y editores
+# ============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ============================
+# Sistema operativo
+# ============================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ext
+.VSCodeCounter
