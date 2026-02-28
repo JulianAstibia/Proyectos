@@ -14,10 +14,10 @@ export async function login(email, password) {
     return data
 }
 
-export async function register(username, email, password, password2) {
-    const data = await apiRequest(
+export function register(username, email, password, password2) {
+    return apiRequest(
         ENDPOINT.AUTH.REGISTER,
         "POST",
-        {username, email, password, password2}
+        { username, email, password, password2 }
     )
 }

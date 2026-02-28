@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth import get_user_model
 from .serializers import (
     RegistroSerializer, UserSerializer, ChangePasswordSerializer,
@@ -18,6 +18,7 @@ Usuario = get_user_model()
 class RegistroView(generics.CreateAPIView):
     queryset = Usuario.objects.all()
     serializer_class = RegistroSerializer
+    permission_classes = [AllowAny]
 
 class MeView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
