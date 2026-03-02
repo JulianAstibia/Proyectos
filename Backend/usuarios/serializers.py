@@ -89,7 +89,7 @@ class VerificarEmailSerializer(serializers.Serializer):
         return attrs
 
     def save(self, **kwargs):
-        user = self.validated_data("user")
+        user = self.validated_data["user"]
         user.verificado = True
         user.save()
         return user
