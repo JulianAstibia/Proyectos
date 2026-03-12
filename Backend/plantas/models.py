@@ -25,10 +25,11 @@ class PlantasFavoritas(models.Model):
 class HistorialBusqueda(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="historial_busqueda")
     query = models.CharField(max_length=200)
-    fecha = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-fecha"]
+        unique_together = ("usuario", "query")
 
     def __str__(self):
         return f"{self.query} - {self.usuario}"

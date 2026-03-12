@@ -3,13 +3,16 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from .services import PerenualAPIError, buscar_planta
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import PlantasFavoritas, HistorialBusqueda
 from .serializers import PlantasFavoritasSerializer, HistorialBusquedaSerializer
+from .throttles import BusquedaAnonimoThrottle, BusquedaUsuarioThrottles
 
 # Create your views here.
 class BuscarPlantaView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    throttle_classes = [BusquedaAnonimoThrottle, BusquedaUsuarioThrottles]
+
 
     def get(self, request):
         nombre = request.query_params.get("q")

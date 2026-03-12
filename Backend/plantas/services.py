@@ -12,9 +12,10 @@ def buscar_planta(nombre,user):
     data = buscar_planta_api(nombre)
     nombre = nombre.strip().lower()
 
-    HistorialBusqueda.objects.create(
+    HistorialBusqueda.objects.update_or_create(
         usuario=user,
-        query=nombre
+        query=nombre,
+        defaults={}  # por si quisiera actualizar algun campo más adelante
     )
     return data
 
