@@ -95,25 +95,17 @@ class IdentificarPlantaView(APIView):
     throttle_classes = [BusquedaAnonimoThrottle, BusquedaUsuarioThrottles]
 
     def post(self,request):
-        print("Iniciando request") # Quitar luego de debuguear
         serializer = IdentificarPlantasSerializer(data=request.data)
-        print("serializer creado") # Quitar luego de debuguear
         serializer.is_valid(raise_exception=True)
-        print("serializer validado") # Quitar luego de debuguear
         imagen = serializer.validated_data["image"]
-        print("Imagen validada por serializer") # Quitar luego de debuguear
         try:
-            print("Iniciando Busqueda") # Quitar luego de debuguear
             nombre_comun, nombre_cientifico, probabilidad = obtener_nombre_cientifico(imagen)
-            print("Plantnet OK") # Quitar luego de debuguear
             user = request.user if request.user.is_authenticated else None
             data = buscar_planta(nombre_cientifico, user)
-            print("Perenual OK con Nombre cientifico") # Quitar luego de debuguear
             if not data.get("data"):
                 for name in nombre_comun:
                     data = buscar_planta(name, user)
                     if data.get("data"):
-                        print("Perenual OK con nombre comun") # Quitar luego de debuguear
                         break
             
             try:
@@ -144,8 +136,6 @@ class IdentificarPlantaView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         except Exception as e:
-            import traceback # Quitar luego de debuguear
-            traceback.print_exc() # Quitar luego de debuguear
             return Response(
                 {"error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR

@@ -2,7 +2,7 @@ const SearchBar = ({ query, setQuery, onSearch, loading }) => {
     return (
         <div>
             <h3>Busqueda por Nombre</h3>
-            <form onSubmit={onSearch} className="d-flex gap-2">
+            <form onSubmit={onSearch} className="d-flex flex-column flex-md-row gap-2">
 
                 <input 
                     type="text"
@@ -12,7 +12,7 @@ const SearchBar = ({ query, setQuery, onSearch, loading }) => {
                     onChange={(e) => setQuery(e.target.value)}
                     />
                 <button 
-                    className="btn btn-success col-2"
+                    className="btn btn-success w-md-25 col-md-2"
                     disabled={loading}
                     >
                     {loading ? "..." : "Buscar"}

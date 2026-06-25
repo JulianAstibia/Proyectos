@@ -40,8 +40,6 @@ const Inicio = () =>{
     const handleIdentificar = async () => {
         if (!imagen) return
         
-        console.log("Tamaño:", imagen.size) // Quitar luego de debuguear
-        console.log("Tipo:", imagen.type) // Quitar luego de debuguear
         try {
             setLoading(true)
             setError(null)
