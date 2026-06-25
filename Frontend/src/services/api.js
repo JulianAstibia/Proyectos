@@ -62,10 +62,10 @@ export const apiRequest = async (endpoint, method= "GET", body = null) => {
 
         console.log("ERROR BACKEND COMPLETO:", data)
 
-        if (response.status === 401) throw {general: ["Email o contraseña inválida"]}
-        if (response.status === 429) throw {general: ["Límite de búsqueda alcanzado. Intentá más tarde."]}
-        if (response.status === 500) throw {general: ["Error interno del servidor"]}
-        if (response.status === 404) throw {general: ["Recurso no encontrado"]}
+        if (response.status === 401) throw new Error("Email o contraseña inválida")
+        if (response.status === 429) throw new Error("Límite de consultas alcanzada. Inténtalo más tarde.")
+        if (response.status === 500) throw new Error("Error interno del servidor")
+        if (response.status === 404) throw new Error("Recurso no encontrado")
         
         throw data
     }
