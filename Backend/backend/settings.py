@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://p-api-plantas.onrender.com",
+    "https://p-api-plantas-bkua5e35i-julianastibias-projects.vercel.app",
 ]
 
 # Application definition
@@ -171,6 +172,7 @@ CACHES = {
 
 CORS_ALLOWED_ORIGINS = [
     "https://p-api-plantas.vercel.app",
+    "https://p-api-plantas-bkua5e35i-julianastibias-projects.vercel.app",
     "http://localhost:5173",
     "http://localhost:5000"
 ]
