@@ -1,16 +1,28 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import logo from "../assets/logo.png"
 
 const Navbar = () => {
   const navigate = useNavigate()
   const { isLogged, logout } = useAuth()
 
+  const logo_planta = ()=> {
+    return(
+      <Link className="navbar-brand" to="/">
+        <img
+          src={logo}
+          alt="Plantitas"
+          className="logo"
+          width="50"
+          height="50"
+          />
+      </Link>
+      )}
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={"/"}>
-          Plantitas
-        </Link>
+        {logo_planta()}
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
