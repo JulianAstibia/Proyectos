@@ -8,6 +8,7 @@ const FormLogin = () => {
         password: ""
     })
     const [errors, setErrors] = useState({})
+    const [generalError, setGeneralError] = useState("")
     const [success, setSuccess] = useState("")
     const navigate = useNavigate()
     const { loginUser } = useAuth()
@@ -22,6 +23,7 @@ const FormLogin = () => {
     const handleSubmit = async(e) =>{
         e.preventDefault()
         setErrors({})
+        setGeneralError("")
         setSuccess("")
 
         try {
@@ -31,17 +33,20 @@ const FormLogin = () => {
                 navigate("/")
             }, 1000)
         }catch(err){
-            setErrors(err)
+            if (err instanceof Error) setGeneralError(err.message) 
+            else {
+                setErrors(err)
+                if (err.general) setGeneralError(err.general)
+            }
         }
     }   
     return(
         <form className="fs-4" onSubmit={handleSubmit}>
-            {errors.general && (
+            {generalError && (
                 <div className="alert alert-danger fs-6">
-                    {errors.general}
+                    {generalError}
                 </div>
             )}
-            
             <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input 
