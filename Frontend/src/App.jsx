@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import PrivateRouter from "./components/PrivateRouter"
+import IniciandoServidorToast from "./components/IniciandoBackend"
 
 import Inicio from "./pages/Inicio"
 import Favoritas from "./pages/Favoritas"
@@ -14,7 +15,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        
+        <IniciandoServidorToast />
         <div className="container mt-5">
           <Routes>
             <Route path="/" element={ <Inicio />} />
